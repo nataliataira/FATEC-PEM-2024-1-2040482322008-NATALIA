@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int main()
+int main(void)
 {
     char  frase[100];
     char  *palavra;
