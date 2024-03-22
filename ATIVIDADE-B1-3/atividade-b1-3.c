@@ -2,6 +2,12 @@
 
 #define LIN 8
 #define COL 8
+#define ID "TCBDRP"
+typedef enum cor
+{
+    BRANCO,
+    PRETO
+}   Cor;
 
 typedef struct  peca
 {
@@ -10,12 +16,12 @@ typedef struct  peca
     char    *pos;
 }   Peca;
 
-void    iniTabuleiro(char tabuleiro[LIN][COL])
+void    camposVazios(char tabuleiro[LIN][COL])
 {
-    int     posLin = 0;
+    int     posLin = 2;
     int     posCol;
 
-    while (posLin < LIN)
+    while (posLin < LIN - 2)
     {
         posCol = 0;
         while (posCol < COL)
@@ -53,7 +59,7 @@ int main(void)
 {
     char    tabuleiro[LIN][COL];
 
-    iniTabuleiro(tabuleiro);
+    camposVazios(tabuleiro);
     printTabuleiro(tabuleiro);
     return (0);
 }
