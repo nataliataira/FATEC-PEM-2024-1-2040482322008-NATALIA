@@ -3,6 +3,13 @@
 #define LIN 8
 #define COL 8
 
+typedef struct  peca
+{
+    char    *cor;
+    char    *id;
+    char    *pos;
+}   Peca;
+
 void    iniTabuleiro(char tabuleiro[LIN][COL])
 {
     int     posLin = 0;
@@ -24,10 +31,13 @@ void    printTabuleiro(char tabuleiro[LIN][COL])
 {
     int     posLin = 0;
     int     posCol;
+    int     num = 1;
+    
 
     while (posLin < LIN)
     {
         posCol = 0;
+        printf("%i ", num++);
         while (posCol < COL)
         {
             printf(" %c ", tabuleiro[posLin][posCol]);
@@ -36,6 +46,7 @@ void    printTabuleiro(char tabuleiro[LIN][COL])
         printf("\n");
         posLin++;
     }
+    printf("   A  B  C  D  E  F  G  H\n");
 }
 
 int main(void)
@@ -46,8 +57,3 @@ int main(void)
     printTabuleiro(tabuleiro);
     return (0);
 }
-
-/*
-** 
-**
-*/
