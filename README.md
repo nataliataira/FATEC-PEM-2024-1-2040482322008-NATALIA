@@ -1,21 +1,21 @@
-# College Activities Repository
+# Repositório de Atividades
 
-## Purpose
-This repository is dedicated to submitting college activities for the discipline of Structured and Modular Programming.
+## Propósito
+Este repositório é dedicado à submissão de atividades universitárias para a disciplina de Programação Estruturada e Modular.
 
-## Organization
-Each activity has its own folder within the repository, and these folders contain the source code files.
+## Organização
+Cada atividade possui sua própria pasta dentro do repositório, e essas pastas contêm os arquivos de código-fonte.
 
-### Folder Structure
+### Estrutura de Pastas
 - **ATIVIDADE-B1-1/**
   - *atividade-b1-1.c*
 - **ATIVIDADE-B1-2/**
   - *atividade-b1-2.c*
 
-### Activity 1: Candidate Assessment Grading
-- **Description:** An IT company selects 20 interns yearly. Candidates take tests in logical reasoning, project management, English, agile methodology, and JavaScript. Their final grade is the sum of middle scores in each test, excluding the highest and lowest.
-- **Task:** Write a C program that calculates the candidate's final grade.
-- **Source Code:** The source code file for this activity can be found in the *ATIVIDADE-B1-1* folder as *atividade_b1-1.c*.
+### Atividade 1: Avaliação de Candidatos
+- **Descrição:** Uma empresa de TI seleciona 20 estagiários por ano. Os candidatos fazem testes em raciocínio lógico, gerenciamento de projetos, inglês, metodologia ágil e JavaScript. Sua nota final é a soma das notas intermediárias em cada teste, excluindo a mais alta e a mais baixa.
+- **Tarefa:** Escreva um programa em C que calcula a nota final do candidato.
+- **Código Fonte:** O arquivo de código fonte para esta atividade pode ser encontrado na pasta *ATIVIDADE-B1-1* como *atividade_b1-1.c*.
 
-## License
-This repository is licensed under the [MIT License](LICENSE).
+## Licença
+Este repositório está licenciado sob a [Licença MIT](LICENSE).
