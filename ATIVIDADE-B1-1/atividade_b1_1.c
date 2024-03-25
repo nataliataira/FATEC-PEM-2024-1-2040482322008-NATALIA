@@ -29,35 +29,23 @@ int main(void)
 
     while (numNotas != 0 && numArea < qtsAreas)
     {
-        // Solicitada a quantidade de notas
         printf("Insira a quantidade de notas para a área \"%s\" (0 para sair): ", area[numArea]);
         scanf("%i", &numNotas);
-        // Tratamento de erro
         if (numNotas == 0)
             return (0);
         else if (numNotas <= 2)
-        {
             printf("O número de notas deve ser maior que 2\n");
-        }
         else
         {
-            // Alocação de memória para o array de float
             notas = (float *)malloc(sizeof(float) * numNotas);
-            // Tratamento de erro da alocação
             if (!notas)
                 return (1);
-            // Armazenamento das notas na posição certa do array
             while (pos < numNotas)
             {
                 printf("Insira a notas: ");
                 scanf("%f", &notas[pos]);
                 pos++;
             }
-            /*
-                Verificação do maior e menor valor simultaneamente à soma
-                dos n elementos do array e a exclusão do maior e menor valor
-                do array
-            */
             pos = 0;
             maior = notas[0];
             menor = notas[0];
@@ -72,15 +60,10 @@ int main(void)
                 pos++;
             }
             somaNotas = somaNotas - (menor + maior);
-            // Escrita da soma da nota no terminal
             printf("Nota de %s: %f\n", area[numArea], somaNotas);
-            // Soma da nota de uma área com as áreas seguintes
             somaCandidato += somaNotas;
-            // Incremento de variável da posição do array de áreas
             numArea++;
-            // Zerando variável chave para controle do array
             pos = 0;
-            // Liberação da memória alocada para o array
             free(notas);
             if (numArea == qtsAreas)
                 printf("Nota Final do Candidato: %f\n", somaCandidato);
