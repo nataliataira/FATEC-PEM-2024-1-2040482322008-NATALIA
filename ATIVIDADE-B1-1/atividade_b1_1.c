@@ -1,13 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 #define QTDQUESTOES 10
 #define QTDAREAS 5
 
 int main(void)
 {
-    int     numNotas;
+    int     pos;
+    int     numArea = 0;
+    int     numNotas = 1;
+
+    float   maiorNota;
+    float   menorNota;
+    float   somaNotas;
+    float   somaCandidato = 0;
     float   notas[QTDQUESTOES];
     float   notaArea[QTDAREAS];
+
     char    *area[] = { \
         "Raciocínio Lógico", \
         "Conceito de Gerenciamento de Projetos", \
@@ -15,18 +24,6 @@ int main(void)
         "Conceito e Metodologia Ágil", \
         "Linguagem Javascript" \
     };
-    
-
-    // teste
-    int     pos = 0;
-    float   maiorNota;
-    float   menorNota;
-    float   somaNotas = 0;
-    float   somaCandidato = 0;
-    int     numArea = 0;
-    // teste
-
-    numNotas = 1;
 
     while (numNotas != 0 && numArea < QTDAREAS)
     {
