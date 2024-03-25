@@ -1,73 +1,119 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define QTDQUESTOES 10
+#define QTDAREAS 5
 
 int main(void)
 {
     int     numNotas;
-    int     pos;
-    int     numArea;
-    int     qtsAreas;
-    float   maior;
-    float   menor;
-    float   *notas;
-    float   somaNotas;
-    float   somaCandidato;
-    char *area[] = { \
+    float   notas[QTDQUESTOES];
+    float   notaArea[QTDAREAS];
+    char    *area[] = { \
         "Raciocínio Lógico", \
         "Conceito de Gerenciamento de Projetos", \
         "Língua Inglesa", \
         "Conceito e Metodologia Ágil", \
         "Linguagem Javascript" \
     };
+    
+
+    // teste
+    int     pos = 0;
+    float   maiorNota;
+    float   menorNota;
+    float   somaNotas = 0;
+    float   somaCandidato = 0;
+    int     numArea = 0;
+    // teste
 
     numNotas = 1;
-    pos = 0;
-    somaCandidato = 0;
-    numArea = 0;
-    qtsAreas = sizeof(area) / sizeof(area[0]);
 
-
-    while (numNotas != 0 && numArea < qtsAreas)
+    while (numNotas != 0 && numArea < QTDAREAS)
     {
-        printf("Insira a quantidade de notas para a área \"%s\" (0 para sair): ", area[numArea]);
+        printf("Insira a quantidade de questões de %s: ", area[numArea]);
         scanf("%i", &numNotas);
         if (numNotas == 0)
             return (0);
-        else if (numNotas <= 2)
-            printf("O número de notas deve ser maior que 2\n");
+        else if (numNotas <= 2 || numNotas > 10)
+            printf("O número de questões deve ser maior que 2 e menor que 10\n");
         else
         {
-            notas = (float *)malloc(sizeof(float) * numNotas);
-            if (!notas)
-                return (1);
-            while (pos < numNotas)
+            switch (numNotas)
             {
-                printf("Insira a notas: ");
-                scanf("%f", &notas[pos]);
-                pos++;
+                case (3):
+                {
+                    printf("Digite a nota de cada questão separada por um espaço: ");
+                    scanf("%f %f %f", &notas[0], &notas[1], &notas[2]);
+                    break;
+                }
+                case (4):
+                {
+                    printf("Digite a nota de cada questão separada por um espaço: ");
+                    scanf("%f %f %f %f", &notas[0], &notas[1], &notas[2], &notas[3]);
+                    break;
+                }
+                case (5):
+                {
+                    printf("Digite a nota de cada questão separada por um espaço: ");
+                    scanf("%f %f %f %f %f", &notas[0], &notas[1], &notas[2], &notas[3], &notas[4]);
+                    break;
+                }
+                case (6):
+                {
+                    printf("Digite a nota de cada questão separada por um espaço: ");
+                    scanf("%f %f %f %f %f %f", &notas[0], &notas[1], &notas[2], &notas[3], &notas[4], &notas[5]);
+                    break;
+                }
+                case (7):
+                {
+                    printf("Digite a nota de cada questão separada por um espaço: ");
+                    scanf("%f %f %f %f %f %f %f", &notas[0], &notas[1], &notas[2], &notas[3], &notas[4], &notas[5], &notas[6]);
+                    break;
+                }
+                case (8):
+                {
+                    printf("Digite a nota de cada questão separada por um espaço: ");
+                    scanf("%f %f %f %f %f %f %f %f", &notas[0], &notas[1], &notas[2], &notas[3], &notas[4], &notas[5], &notas[6], &notas[7]);
+                    break;
+                }
+                case (9):
+                {
+                    printf("Digite a nota de cada questão separada por um espaço: ");
+                    scanf("%f %f %f %f %f %f %f %f %f", &notas[0], &notas[1], &notas[2], &notas[3], &notas[4], &notas[5], &notas[6], &notas[7], &notas[8]);
+                    break;
+                };
+                case (10):
+                {
+                    printf("Digite a nota de cada questão separada por um espaço: ");
+                    scanf("%f %f %f %f %f %f %f %f %f %f", &notas[0], &notas[1], &notas[2], &notas[3], &notas[4], &notas[5], &notas[6], &notas[7], &notas[8], &notas[9]);
+                    break;
+                }
             }
+            menorNota = notas[0];
+            maiorNota = notas[0];
             pos = 0;
-            maior = notas[0];
-            menor = notas[0];
             somaNotas = 0;
             while (pos < numNotas)
             {
                 somaNotas += notas[pos];
-                if (notas[pos] < menor)
-                    menor = notas[pos];
-                else if (notas[pos] > maior)
-                    maior = notas[pos];
+                if (notas[pos] < menorNota)
+                    menorNota = notas[pos];
+                else if (notas[pos] > maiorNota)
+                    maiorNota = notas[pos];
                 pos++;
             }
-            somaNotas = somaNotas - (menor + maior);
-            printf("Nota de %s: %f\n", area[numArea], somaNotas);
+            somaNotas = somaNotas - (menorNota + maiorNota);
+            notaArea[numArea] = somaNotas;
             somaCandidato += somaNotas;
             numArea++;
-            pos = 0;
-            free(notas);
-            if (numArea == qtsAreas)
-                printf("Nota Final do Candidato: %f\n", somaCandidato);
         }
     }
+    numArea = 0;
+    while (numArea < QTDAREAS)
+    {
+        printf("Nota de %s = %.2f\n", area[numArea], notaArea[numArea]);
+        numArea++;
+    }
+    printf("Nota do Candidato = %.2f\n", somaCandidato);
     return (0);
 }
