@@ -1,3 +1,9 @@
+/*
+Objetivo do programa: Calcular a nota de candidatos à vaga de estágio.
+Nome do programador: Natália Taira
+Data de criação: 28/02/2024
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -32,9 +38,13 @@ int main(void)
         printf("Insira a quantidade de notas para a área \"%s\" (0 para sair): ", area[numArea]);
         scanf("%i", &numNotas);
         if (numNotas == 0)
+        {
             return (0);
+        }
         else if (numNotas <= 2)
+        {
             printf("O número de notas deve ser maior que 2\n");
+        }
         else
         {
             switch (numNotas)
@@ -95,9 +105,13 @@ int main(void)
             {
                 somaNotas += notas[pos];
                 if (notas[pos] < menor)
+                {
                     menor = notas[pos];
+                }
                 else if (notas[pos] > maior)
+                {
                     maior = notas[pos];
+                }
                 pos++;
             }
             somaNotas = somaNotas - (menor + maior);
@@ -107,7 +121,9 @@ int main(void)
             pos = 0;
             free(notas);
             if (numArea == qtsAreas)
+            {
                 printf("Nota Final do Candidato: %f\n", somaCandidato);
+            }
         }
     }
     return (0);
