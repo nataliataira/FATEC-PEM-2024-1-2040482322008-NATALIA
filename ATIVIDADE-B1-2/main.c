@@ -1,3 +1,9 @@
+/*
+Objetivo do programa: Identificar palavras palíndromas dentro de uma frase.
+Nome do programador: Natália Taira e Cristian Daniel.
+Data de criação: 15/03/2024
+*/
+
 #include <stdio.h>
 #include <string.h>
 
@@ -22,7 +28,6 @@ int main(void)
     while (palavra != NULL)
     {
         tamPalavra = strlen(palavra);
-
         for(i = 0; i < tamPalavra / 2; i++)
         {
             if (palavra[i] == palavra[tamPalavra - i - 1])
