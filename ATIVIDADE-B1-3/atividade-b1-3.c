@@ -73,34 +73,33 @@ void    insCorCasas(t_tab tabuleiro[][8], const int tamTab)
 
 void    inserirPecas(t_tab tabuleiro[][8], const int tamTab)
 {
-    char pecas[] = {'T', 'C', 'B', 'D', 'R', 'B', 'C', 'T'};
-    char numP[] = {'1', '2', '3', '4', '5', '6', '7', '8'};
+    char nmPeca[] = {'T', 'C', 'B', 'D', 'R', 'B', 'C', 'T'};
+    char nrPeca[] = {'1', '1', '1', ' ', ' ', '2', '2', '2'};
+    char nrPeao[] = {'1', '2', '3', '4', '5', '6', '7', '8'};
 
-    // Set white pieces
     for (int col = 0; col < tamTab; ++col)
     {
         tabuleiro[0][col].peca.cor = 'B';
-        tabuleiro[0][col].peca.nome = pecas[col];
-        tabuleiro[0][col].peca.num = '1';
+        tabuleiro[0][col].peca.nome = nmPeca[col];
+        tabuleiro[0][col].peca.num = nrPeca[col];
         tabuleiro[0][col].estaVazio = 0;
 
         tabuleiro[1][col].peca.cor = 'B';
         tabuleiro[1][col].peca.nome = 'P';
-        tabuleiro[1][col].peca.num = numP[col];
+        tabuleiro[1][col].peca.num = nrPeao[col];
         tabuleiro[1][col].estaVazio = 0;
     }
 
-    // Set black pieces
     for (int col = 0; col < tamTab; ++col)
     {
         tabuleiro[7][col].peca.cor = 'P';
-        tabuleiro[7][col].peca.nome = pecas[col];
-        tabuleiro[7][col].peca.num = '1';
+        tabuleiro[7][col].peca.nome = nmPeca[col];
+        tabuleiro[7][col].peca.num = nrPeca[col];
         tabuleiro[7][col].estaVazio = 0;
 
         tabuleiro[6][col].peca.cor = 'P';
         tabuleiro[6][col].peca.nome = 'P';
-        tabuleiro[6][col].peca.num = numP[col];
+        tabuleiro[6][col].peca.num = nrPeao[col];
         tabuleiro[6][col].estaVazio = 0;
     }
 }
