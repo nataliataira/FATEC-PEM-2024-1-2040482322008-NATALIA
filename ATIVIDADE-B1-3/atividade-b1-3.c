@@ -1,77 +1,69 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-#define LIN 8
-#define COL 8
-
-typedef struct  peca
+typedef struct s_peca
 {
     char    cor;
     char    nome;
     char    num;
-}   Peca;
+} t_peca;
 
-void    camposVazios(Peca tabuleiro[LIN][COL])
+typedef struct s_casaTab
 {
-    int posLin = 2;
-    int posCol;
+    char    corCasa;
+    t_peca  peca;
+    int     estaVazio;
+} t_tab;
 
-    while (posLin < LIN - 2)
-    {
-        posCol = 0;
-        while (posCol < COL)
-        {
-            tabuleiro[posLin][posCol].cor = '-';
-            tabuleiro[posLin][posCol].nome = 'X';
-            tabuleiro[posLin][posCol].num = '-';
-            posCol++;
-        }
-        posLin++;
-    }
+void    inicTabuleiro(t_tab tabuleiro[][8], const int tamTab);
+void    insCorCasas(t_tab tabuleiro[][8], const int tamTab);
+void    inserirPecas(t_tab tabuleiro[][8], const int tamTab);
+void    mostrarTabuleiro(t_tab tabuleiro[][8], const int tamTab);
+
+int main(void)
+{
+    const int tamTab = 8;
+    t_tab   tabuleiro[tamTab][tamTab];
+
+    inicTabuleiro(tabuleiro, tamTab);
+    mostrarTabuleiro(tabuleiro, tamTab);
+
+    return (0);
 }
 
-void    defineCorPecas(Peca tabuleiro[LIN][COL])
+/* 
+Inserir as peças no tabuleiro
+    - cor da peça
+    - nome da peça
+    - numero da peça
+Indicar a cor das casas;
+    - (lin + col) par -> casa preta
+
+*/
+void    inicTabuleiro(t_tab tabuleiro[][8], const int tamTab)
+{
+    insCorCasas(tabuleiro, tamTab);
+    inserirPecas(tabuleiro, tamTab);
+}
+
+void    insCorCasas(t_tab tabuleiro[][8], const int tamTab)
 {
     int posLin = 0;
     int posCol;
 
-    while (posLin < LIN)
+    while (posLin < tamTab)
     {
         posCol = 0;
-        while (posCol < COL)
+        while (posCol < tamTab)
         {
-            if (posLin == 0 || posLin == 1)
-                tabuleiro[posLin][posCol].cor = 'B';
-            else if (posLin == 6 || posLin == 7)
-                tabuleiro[posLin][posCol].cor = 'P';
-            posCol++;
-        }
-        posLin++;
-    }
-}
-
-void    posicaoPecas(Peca tabuleiro [LIN][COL])
-{
-    int     posLin = 0;
-    int     posCol;
-    char    pecas[8] = {'T', 'C', 'B', 'D', 'R', 'B', 'C', 'T'};
-    char    num[8] = {'1', '1', '1', '-', '-', '2', '2', '2'};
-    char    numP[8] = {'1', '2', '3', '4', '5', '6', '7', '8'};
-
-    while (posLin < LIN)
-    {
-        posCol = 0;
-        while (posCol < COL)
-        {
-            if (posLin == 0 || posLin == 7)
+            if ((posLin + posCol) % 2 == 0)
             {
-                tabuleiro[posLin][posCol].nome = pecas[posCol];
-                tabuleiro[posLin][posCol].num = num[posCol];
+                tabuleiro[posCol][posLin].corCasa = '-'; //branco
+                tabuleiro[posCol][posLin].estaVazio = 1;
             }
-            else if (posLin == 1 || posLin == 6)
+            else
             {
-                tabuleiro[posLin][posCol].nome = 'P';
-                tabuleiro[posLin][posCol].num = numP[posCol];
+                tabuleiro[posCol][posLin].corCasa = 'x'; //preto
+                tabuleiro[posCol][posLin].estaVazio = 1;
             }
             posCol++;
         }
@@ -79,42 +71,65 @@ void    posicaoPecas(Peca tabuleiro [LIN][COL])
     }
 }
 
-void    inserirPecas(Peca tabuleiro[LIN][COL])
+void    inserirPecas(t_tab tabuleiro[][8], const int tamTab)
 {
-    defineCorPecas(tabuleiro);
-    posicaoPecas(tabuleiro);
+    char pecas[] = {'T', 'C', 'B', 'D', 'R', 'B', 'C', 'T'};
+    char numP[] = {'1', '2', '3', '4', '5', '6', '7', '8'};
+
+    // Set white pieces
+    for (int col = 0; col < tamTab; ++col)
+    {
+        tabuleiro[0][col].peca.cor = 'B';
+        tabuleiro[0][col].peca.nome = pecas[col];
+        tabuleiro[0][col].peca.num = '1';
+        tabuleiro[0][col].estaVazio = 0;
+
+        tabuleiro[1][col].peca.cor = 'B';
+        tabuleiro[1][col].peca.nome = 'P';
+        tabuleiro[1][col].peca.num = numP[col];
+        tabuleiro[1][col].estaVazio = 0;
+    }
+
+    // Set black pieces
+    for (int col = 0; col < tamTab; ++col)
+    {
+        tabuleiro[7][col].peca.cor = 'P';
+        tabuleiro[7][col].peca.nome = pecas[col];
+        tabuleiro[7][col].peca.num = '1';
+        tabuleiro[7][col].estaVazio = 0;
+
+        tabuleiro[6][col].peca.cor = 'P';
+        tabuleiro[6][col].peca.nome = 'P';
+        tabuleiro[6][col].peca.num = numP[col];
+        tabuleiro[6][col].estaVazio = 0;
+    }
 }
 
-void    printTabuleiro(Peca tabuleiro[LIN][COL])
+void    mostrarTabuleiro(t_tab tabuleiro[][8], const int tamTab)
 {
-    int     posLin = 0;
-    int     posCol;
-    int     num = 1;
-    
+    int posLin = 0;
+    int posCol;
 
-    while (posLin < LIN)
+    while (posLin < tamTab)
     {
         posCol = 0;
-        printf("%i ", num++);
-        while (posCol < COL)
+        while (posCol < tamTab)
         {
-            printf(" %c%c%c ", tabuleiro[posLin][posCol].cor, \
-            tabuleiro[posLin][posCol].nome, \
-            tabuleiro[posLin][posCol].num);
-            posCol++;
+            if (tabuleiro[posLin][posCol].estaVazio == 1)
+            {
+                printf("  %c  ", tabuleiro[posLin][posCol].corCasa);
+                posCol++;
+            }
+            else
+            {
+                printf(" %c%c%c ", \
+                tabuleiro[posLin][posCol].peca.cor, \
+                tabuleiro[posLin][posCol].peca.nome, \
+                tabuleiro[posLin][posCol].peca.num);
+                posCol++;
+            }
         }
         printf("\n");
         posLin++;
     }
-    printf("    A    B    C    D    E    F    G    H\n");
-}
-
-int main(void)
-{
-    Peca    tabuleiro[LIN][COL];
-
-    camposVazios(tabuleiro);
-    inserirPecas(tabuleiro);
-    printTabuleiro(tabuleiro);
-    return (0);
 }
