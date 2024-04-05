@@ -112,6 +112,7 @@ void    mostrarTabuleiro(t_tab tabuleiro[][8], const int tamTab)
     while (posLin < tamTab)
     {
         posCol = 0;
+        printf("%i", posLin + 1);
         while (posCol < tamTab)
         {
             if (tabuleiro[posLin][posCol].estaVazio == 1)
@@ -131,4 +132,5 @@ void    mostrarTabuleiro(t_tab tabuleiro[][8], const int tamTab)
         printf("\n");
         posLin++;
     }
+    printf("   A    B    C    D    E    F    G    H");
 }
