@@ -18,27 +18,21 @@ void    inicTabuleiro(t_tab tabuleiro[][8], const int tamTab);
 void    insCorCasas(t_tab tabuleiro[][8], const int tamTab);
 void    inserirPecas(t_tab tabuleiro[][8], const int tamTab);
 void    mostrarTabuleiro(t_tab tabuleiro[][8], const int tamTab);
+void    headerTabuleiro(int jogada);
 
 int main(void)
 {
     const int tamTab = 8;
+    int         jogada = 0;
     t_tab   tabuleiro[tamTab][tamTab];
 
     inicTabuleiro(tabuleiro, tamTab);
+    headerTabuleiro(jogada);
     mostrarTabuleiro(tabuleiro, tamTab);
 
     return (0);
 }
 
-/* 
-Inserir as peças no tabuleiro
-    - cor da peça
-    - nome da peça
-    - numero da peça
-Indicar a cor das casas;
-    - (lin + col) par -> casa preta
-
-*/
 void    inicTabuleiro(t_tab tabuleiro[][8], const int tamTab)
 {
     insCorCasas(tabuleiro, tamTab);
@@ -57,12 +51,12 @@ void    insCorCasas(t_tab tabuleiro[][8], const int tamTab)
         {
             if ((posLin + posCol) % 2 == 0)
             {
-                tabuleiro[posCol][posLin].corCasa = '-'; //branco
+                tabuleiro[posCol][posLin].corCasa = 'x'; //preto
                 tabuleiro[posCol][posLin].estaVazio = 1;
             }
             else
             {
-                tabuleiro[posCol][posLin].corCasa = 'x'; //preto
+                tabuleiro[posCol][posLin].corCasa = '-'; //branco
                 tabuleiro[posCol][posLin].estaVazio = 1;
             }
             posCol++;
@@ -109,6 +103,7 @@ void    mostrarTabuleiro(t_tab tabuleiro[][8], const int tamTab)
     int posLin = 0;
     int posCol;
 
+
     while (posLin < tamTab)
     {
         posCol = 0;
@@ -132,5 +127,25 @@ void    mostrarTabuleiro(t_tab tabuleiro[][8], const int tamTab)
         printf("\n");
         posLin++;
     }
-    printf("   A    B    C    D    E    F    G    H");
+    printf("   A    B    C    D    E    F    G    H\n\n");
 }
+
+void    headerTabuleiro(int jogada)
+{
+    if (jogada == 0)
+    {
+            printf("\n*****************************************\n");
+            printf("*          Bem-vindo ao Xadrez!         *\n");
+            printf("*****************************************\n\n");
+    }
+    else
+    {
+        printf("\n*****************************************\n");
+        printf("*                Jogada %i                *\n", jogada);
+        printf("*****************************************\n\n");
+    }
+}
+
+/*
+** Xeque-Pastor: 
+*/
