@@ -51,12 +51,12 @@ void    insCorCasas(t_tab tabuleiro[][8], const int tamTab)
         {
             if ((posLin + posCol) % 2 == 0)
             {
-                tabuleiro[posCol][posLin].corCasa = 'x'; //preto
+                tabuleiro[posCol][posLin].corCasa = '-'; //branco
                 tabuleiro[posCol][posLin].estaVazio = 1;
             }
             else
             {
-                tabuleiro[posCol][posLin].corCasa = '-'; //branco
+                tabuleiro[posCol][posLin].corCasa = 'x'; //preto
                 tabuleiro[posCol][posLin].estaVazio = 1;
             }
             posCol++;
@@ -73,12 +73,12 @@ void    inserirPecas(t_tab tabuleiro[][8], const int tamTab)
 
     for (int col = 0; col < tamTab; ++col)
     {
-        tabuleiro[0][col].peca.cor = 'B';
+        tabuleiro[0][col].peca.cor = 'P';
         tabuleiro[0][col].peca.nome = nmPeca[col];
         tabuleiro[0][col].peca.num = nrPeca[col];
         tabuleiro[0][col].estaVazio = 0;
 
-        tabuleiro[1][col].peca.cor = 'B';
+        tabuleiro[1][col].peca.cor = 'P';
         tabuleiro[1][col].peca.nome = 'P';
         tabuleiro[1][col].peca.num = nrPeao[col];
         tabuleiro[1][col].estaVazio = 0;
@@ -86,12 +86,12 @@ void    inserirPecas(t_tab tabuleiro[][8], const int tamTab)
 
     for (int col = 0; col < tamTab; ++col)
     {
-        tabuleiro[7][col].peca.cor = 'P';
+        tabuleiro[7][col].peca.cor = 'B';
         tabuleiro[7][col].peca.nome = nmPeca[col];
         tabuleiro[7][col].peca.num = nrPeca[col];
         tabuleiro[7][col].estaVazio = 0;
 
-        tabuleiro[6][col].peca.cor = 'P';
+        tabuleiro[6][col].peca.cor = 'B';
         tabuleiro[6][col].peca.nome = 'P';
         tabuleiro[6][col].peca.num = nrPeao[col];
         tabuleiro[6][col].estaVazio = 0;
@@ -107,7 +107,7 @@ void    mostrarTabuleiro(t_tab tabuleiro[][8], const int tamTab)
     while (posLin < tamTab)
     {
         posCol = 0;
-        printf("%i", posLin + 1);
+        printf("%i", tamTab - posLin);
         while (posCol < tamTab)
         {
             if (tabuleiro[posLin][posCol].estaVazio == 1)
@@ -127,7 +127,7 @@ void    mostrarTabuleiro(t_tab tabuleiro[][8], const int tamTab)
         printf("\n");
         posLin++;
     }
-    printf("   A    B    C    D    E    F    G    H\n\n");
+    printf("   a    b    c    d    e    f    g    h\n\n");
 }
 
 void    headerTabuleiro(int jogada)
@@ -135,7 +135,9 @@ void    headerTabuleiro(int jogada)
     if (jogada == 0)
     {
             printf("\n*****************************************\n");
-            printf("*          Bem-vindo ao Xadrez!         *\n");
+            printf("*                                       *\n");
+            printf("*     Posição inicial do tabuleiro!     *\n");
+            printf("*                                       *\n");
             printf("*****************************************\n\n");
     }
     else
@@ -146,6 +148,4 @@ void    headerTabuleiro(int jogada)
     }
 }
 
-/*
-** Xeque-Pastor: 
-*/
+
