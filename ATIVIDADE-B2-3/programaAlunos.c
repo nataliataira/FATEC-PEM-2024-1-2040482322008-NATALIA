@@ -37,7 +37,6 @@ char    *palavraMinuscula(char *str)
 
 void    incluirAluno(Aluno aluno[], int posAluno)
 {
-    char    nome[50];
     double  nota;
 
     printf("Digite o nome do aluno: ");
@@ -101,7 +100,7 @@ void    listarAlunos(Aluno aluno[], int posAluno)
     }
 }
 
-void    progPrinc(void)
+void    progAlunos(void)
 {
     Aluno    aluno[50];
     int    opc = 0;
