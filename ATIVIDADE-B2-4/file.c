@@ -107,18 +107,40 @@ void    ordenarProdutos(Produto prod[], int qtdProd)
 
 void    compra(Produto prod[], int qtdProd)
 {
+    int idProd = 0;
+
+    mostrarProdutos(prod, qtdProd);
+    while (1)
+    {
+        printf("Digite o código do produto que deseja comprar: ");
+        scanf("%i", &idProd);
+        if (idProd < 0 || !isdigit(idProd))
+        {
+            fprintf(stderr, "Não são aceitos valores negativos\n");
+            continue;
+        }
+        if (prod[qtdProd - 1].qtdDisp > 0)
+        {
+            // Remover esse produto
+        }
+
+    }
+}
+
+void    mostrarProdutos(Produto prod[], int qtdProd)
+{
     int pos = 0;
 
     printf("\n__________________________________\n\n");
     printf("COMPRAS\n");
     printf("__________________________________\n\n");
-    printf("NOME\t\t| DESCRIÇÃO\t\t\t| PREÇO UNIT.\t| QUANT.\n");
+    printf("CÓDIGO | NOME |DESCRIÇÃO | PREÇO\n");
     printf("__________________________________\n\n");
     ordenarProdutos(prod, qtdProd);
 
     while (pos < qtdProd)
     {
-        printf("%-15s\t%-40s\t%2.lf\t%i\n", prod[pos].nome, prod[pos].descricao, prod[pos].precoUnit, prod[pos].qtdDisp);
+        printf("%i\t%-10s\t%-20s\t%2.lf\t%i\n", prod[pos].id, prod[pos].nome, prod[pos].descricao, prod[pos].precoUnit, prod[pos].qtdDisp);
         printf("__________________________________\n\n");
         pos++;
     }
