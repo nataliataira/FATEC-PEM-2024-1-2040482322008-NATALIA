@@ -28,6 +28,7 @@ para a opção de listar, mostrar a lista de produtos, em ordem alfabética de n
 
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 
 typedef struct produto
 {
@@ -58,9 +59,10 @@ void    incluirProduto(Produto prod[], int qtdProd)
     {
         printf("Digite o preço unitário do produto: ");
         scanf("%lf", &precoUnit);
+        getchar();
         if (precoUnit < 0)
         {
-            fprintf(stderr, "Não são aceitos valores negativos\n");
+            fprintf(stderr, "O Preço unitário deve ser um valor positivo. Tente novamente!\n");
             continue;
         }
         prod[qtdProd].precoUnit = precoUnit;
@@ -71,15 +73,18 @@ void    incluirProduto(Produto prod[], int qtdProd)
     {
         printf("Digite a quantidade do produto: ");
         scanf("%i", &qtdProdIncl);
+        getchar();
         if (qtdProdIncl < 0)
         {
-            fprintf(stderr, "Não são aceitos valores negativos\n");
+            fprintf(stderr, "A quantidade deve ser um valor positivo. Tente novamente!\n");
             continue;
         }
         prod[qtdProd].qtdDisp = qtdProdIncl;
         break;
     }
+
     prod[qtdProd].id = qtdProd + 1;
+    printf("Produto adicionado!");
 }
 
 void    ordenarProdutos(Produto prod[], int qtdProd)
@@ -93,7 +98,7 @@ void    ordenarProdutos(Produto prod[], int qtdProd)
         pos2 = 0;
         while (pos2 < qtdProd - 1 - pos)
         {
-            if (strcmp(prod[pos2].nome, prod[pos2 + 1].nome) > 1)
+            if (strcmp(prod[pos2].nome, prod[pos2 + 1].nome) > 0)
             {
                 aux = prod[pos2];
                 prod[pos2] = prod[pos2 + 1];
@@ -105,28 +110,6 @@ void    ordenarProdutos(Produto prod[], int qtdProd)
     }
 }
 
-void    compra(Produto prod[], int qtdProd)
-{
-    int idProd = 0;
-
-    mostrarProdutos(prod, qtdProd);
-    while (1)
-    {
-        printf("Digite o código do produto que deseja comprar: ");
-        scanf("%i", &idProd);
-        if (idProd < 0 || !isdigit(idProd))
-        {
-            fprintf(stderr, "Não são aceitos valores negativos\n");
-            continue;
-        }
-        if (prod[qtdProd - 1].qtdDisp > 0)
-        {
-            // Remover esse produto
-        }
-
-    }
-}
-
 void    mostrarProdutos(Produto prod[], int qtdProd)
 {
     int pos = 0;
@@ -134,23 +117,71 @@ void    mostrarProdutos(Produto prod[], int qtdProd)
     printf("\n__________________________________\n\n");
     printf("COMPRAS\n");
     printf("__________________________________\n\n");
-    printf("CÓDIGO | NOME |DESCRIÇÃO | PREÇO\n");
+    printf("CÓDIGO | NOME |DESCRIÇÃO | PREÇO | QUANTIDADE \n");
     printf("__________________________________\n\n");
     ordenarProdutos(prod, qtdProd);
 
     while (pos < qtdProd)
     {
-        printf("%i\t%-10s\t%-20s\t%2.lf\t%i\n", prod[pos].id, prod[pos].nome, prod[pos].descricao, prod[pos].precoUnit, prod[pos].qtdDisp);
+        printf("%i\t%-10s\t%-20s\t%2.lf\t%i\t\n", prod[pos].id, prod[pos].nome, prod[pos].descricao, prod[pos].precoUnit, prod[pos].qtdDisp);
         printf("__________________________________\n\n");
         pos++;
     }
 }
 
+void    compra(Produto prod[], int qtdProd)
+{
+    Produto *aux;
+    int     idProd = 0;
+    int     qtdCompra = 0;
+
+    mostrarProdutos(prod, qtdProd);
+    while (1)
+    {
+        printf("Digite o código do produto que deseja comprar: ");
+        scanf("%i", &idProd);
+        getchar();
+        if (idProd < 0 || idProd > qtdProd)
+        {
+            fprintf(stderr, "O código do produto deve ser um valor válido. Tente novamente!\n");
+            continue;
+        }
+        break;
+    }
+
+    while (1)
+    {
+        printf("Digite a quantidade que deseja comprar: ");
+        scanf("%i", &qtdCompra);
+        getchar();
+        if (qtdCompra < 0)
+        {
+            fprintf(stderr, "O código do produto deve ser um valor válido. Tente novamente!\n");
+            continue;
+        }
+        else if (prod[idProd - 1].qtdDisp < qtdCompra)
+        {
+            fprintf(stderr, "Há apenas %i únidades em estoque. Tente novamente!\n", prod[idProd - 1].qtdDisp);
+            continue;
+        }
+        break;
+    }
+
+    aux = &prod[idProd - 1];
+    aux->qtdDisp -= qtdCompra;
+    printf("__________________________________\n\n");
+    printf("NOME\t| PREÇO UN\t| PREÇO TOTAL\n\n");
+    printf("%s\t%lf\t%lf\n", prod[qtdProd - 1].nome, prod[qtdProd - 1].precoUnit, (float)qtdCompra * prod[qtdProd - 1].precoUnit);
+    printf("Compra realizada!\n");
+    printf("__________________________________\n");
+}
+
+
 void    mainFunc(void)
 {
     Produto prod[100];
     int     opc = 0;
-    int     qtdProd;
+    int     qtdProd = 0;
 
     while (opc != 3)
     {
