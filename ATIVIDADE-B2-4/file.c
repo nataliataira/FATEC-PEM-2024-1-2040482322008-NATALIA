@@ -143,7 +143,7 @@ void    compra(Produto prod[], int qtdProd)
         getchar();
         if (idProd < 0 || idProd > qtdProd)
         {
-            fprintf(stderr, "O código do produto deve ser um valor válido. Tente novamente!\n");
+            fprintf(stderr, "Produto inexistente. Tente novamente!\n");
             continue;
         }
         break;
