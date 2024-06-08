@@ -116,3 +116,5 @@ Cada atividade possui sua própria pasta dentro do repositório, e essas pastas 
 
 ## Licença
 Este repositório está licenciado sob a [Licença MIT](LICENSE).
+
+![visitors](https://visitor-badge.laobi.icu/badge?page_id=nataliataira.visitor-badge)
