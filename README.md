@@ -117,4 +117,4 @@ Cada atividade possui sua própria pasta dentro do repositório, e essas pastas 
 ## Licença
 Este repositório está licenciado sob a [Licença MIT](LICENSE).
 
-![visitors](https://visitor-badge.laobi.icu/badge?page_id=nataliataira.visitor-badge)
+[![HitCount](https://hits.dwyl.com/nataliataira/FATEC-PEM-2024-1-2040482322008-NATALIA.svg?style=flat-square)](http://hits.dwyl.com/nataliataira/FATEC-PEM-2024-1-2040482322008-NATALIA)
