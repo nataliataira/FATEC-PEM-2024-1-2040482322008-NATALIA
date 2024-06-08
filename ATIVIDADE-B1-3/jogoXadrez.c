@@ -4,7 +4,7 @@ tabuleiro de xadrez com as peças e cores das casas.
 
 Nome do programador: Natália Taira.
 
-Data de criação: 11/04/2024
+Data de criação: 01/04/2024
 */
 
 #include <stdio.h>
