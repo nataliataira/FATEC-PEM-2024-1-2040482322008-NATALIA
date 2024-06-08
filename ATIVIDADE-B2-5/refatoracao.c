@@ -1,3 +1,11 @@
+/*
+Objetivo do programa: Refatorar algum programa desenvolvido.
+
+Nome do programador: Natália Taira.
+
+Data de criação: 07/06/2024
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
