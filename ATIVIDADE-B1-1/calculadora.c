@@ -1,6 +1,9 @@
 /*
-Objetivo do programa: Calcular a nota de candidatos à vaga de estágio.
+Objetivo do programa: Calcular a nota de candidatos à vaga
+de estágio.
+
 Nome do programador: Natália Taira
+
 Data de criação: 28/02/2024
 */
 
