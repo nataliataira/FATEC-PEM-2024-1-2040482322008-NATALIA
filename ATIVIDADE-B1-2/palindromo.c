@@ -1,6 +1,9 @@
 /*
-Objetivo do programa: Identificar palavras palíndromas dentro de uma frase.
+Objetivo do programa: Identificar palavras palíndromas 
+dentro de uma frase.
+
 Nome do programador: Natália Taira e Cristian Daniel.
+
 Data de criação: 15/03/2024
 */
 
