@@ -1,3 +1,11 @@
+/*
+Objetivo do programa: Simular uma calculadora.
+
+Nome do programador: Natália Taira.
+
+Data de criação: 26/04/2024.
+*/
+
 #include <stdio.h>
 #include <ctype.h>
 #include <float.h>
