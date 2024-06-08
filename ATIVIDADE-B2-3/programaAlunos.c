@@ -1,3 +1,11 @@
+/*
+Objetivo do programa: Gerenciar alunos de uma instituição.
+
+Nome do programador: Natália Taira.
+
+Data de criação: 24/05/2024
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
