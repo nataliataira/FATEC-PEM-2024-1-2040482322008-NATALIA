@@ -1,3 +1,10 @@
+/*
+Objetivo do programa: Criar um programa que mostre um
+tabuleiro de xadrez com as peças e cores das casas.
+Nome do programador: Natália Taira.
+Data de criação: 11/04/2024
+*/
+
 #include <stdio.h>
 
 typedef struct s_peca
