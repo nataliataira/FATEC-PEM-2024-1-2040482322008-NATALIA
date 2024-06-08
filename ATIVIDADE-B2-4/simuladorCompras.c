@@ -1,29 +1,9 @@
 /*
-B2-4-Praticando Struct/Ponteiro
-Instruções
-Criar um programa em C que use ponteiros para manipular variáveis e funções.
+Objetivo do programa: Simular sistema de compra.
 
-Pede-se:
- O programa deve estar preparado para:
+Nome do programador: Natália Taira.
 
-Inserir lista de produtos
-Simular comprar on-line
-Seleção de produto (por código)
-Quantidade de produtos comprados
-Finalizar venda
-Mostrar lista de produtos na tela
-
-No processo de inclusão de produtos, solicitar os dados para inclusão de produtos.
-
-No processo de compra online, solicitar ao usuário que insira o código de produto.
-Buscar na lista e, se não encontrar, dar mensagem "Produto Inexistente.
-
-Para cada venda, solitar a quantidade de produtos que o comprador deseja.
-Verificar se existe estoque para o produto.
-Caso não existir, avisar ao encauto comprador.
-
-para a opção de listar, mostrar a lista de produtos, em ordem alfabética de nome de produto.
-
+Data de criação: 25/05/2024
 */
 
 #include <stdio.h>
